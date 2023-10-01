@@ -1,10 +1,17 @@
 ﻿
-#include "Raptor Island.h"
+#include "Game.hpp"
 
-using namespace std;
-
-int main()
+int main(int ac, char **av)
 {
-	cout << "Hello CMake." << endl;
+	SDL_SetMainReady();
+
+	Game* game = new Game();
+
+	while (game->isRunning())
+	{
+		game->handleInput();
+		game->update();
+		game->render();
+	}
 	return 0;
 }
