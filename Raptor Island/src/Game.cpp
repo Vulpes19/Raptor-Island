@@ -36,7 +36,9 @@ void	Game::handleInput(void)
 }
 
 void	Game::render(void)
-{}
+{
+	player->render();
+}
 
 void	Game::update(void)
 {}

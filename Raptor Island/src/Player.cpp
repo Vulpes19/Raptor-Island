@@ -6,7 +6,7 @@ Player::Player(std::string textureName) : GameObject(textureName)
 Player::~Player(void)
 {}
 
-void	Player::keyDown(SDL_Scancode key) override
+void	Player::keyDown(SDL_Scancode key)
 {
 	/*
 	switch (key)
@@ -18,5 +18,5 @@ void	Player::keyDown(SDL_Scancode key) override
 	}*/
 }
 
-void	Player::update(void) override
+void	Player::update(void)
 {}

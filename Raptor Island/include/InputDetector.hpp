@@ -5,13 +5,11 @@
 class InputDetector
 {
 	public:
-		~InputHandler(void);
+		~InputDetector(void);
 		static InputDetector* getInstance(void);
 		bool	isKeyPressed(SDL_Scancode) const;
 	private:
-		InputHandler(void);
+		InputDetector(void);
 		static InputDetector* instance;
 		const Uint8* keyboardState = SDL_GetKeyboardState(0);
 };
-
-InputDetector* InputDetector::instance = nullptr;

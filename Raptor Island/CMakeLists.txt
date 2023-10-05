@@ -6,11 +6,24 @@ set(SOURCES
     src/main.cpp
     src/ErrorHandler.cpp
     src/Game.cpp
+    src/TextureManager.cpp
+    src/GameObject.cpp
+    src/Player.cpp
+    src/InputDetector.cpp
+    src/GameObjectFactory.cpp
+    src/Vector.cpp
 )
 
 set(HEADERS
     include/Game.hpp
     include/ErrorHandler.hpp
+    include/TextureManager.hpp
+    include/GameObject.hpp
+    include/Player.hpp
+    include/InputObserver.hpp
+    include/InputDetector.hpp
+    include/GameObjectFactory.hpp
+    include/Vector.hpp
 )
 
 include_directories(include)

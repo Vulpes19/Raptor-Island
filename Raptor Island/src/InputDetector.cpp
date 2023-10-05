@@ -1,4 +1,6 @@
-#include "InputDetector"
+#include "InputDetector.hpp"
+
+InputDetector* InputDetector::instance = nullptr;
 
 InputDetector::InputDetector(void)
 {}
@@ -13,7 +15,7 @@ InputDetector* InputDetector::getInstance(void)
 	return (instance);
 }
 
-bool	InputDetector::isKeyPressed(SDL_Scancode key)
+bool	InputDetector::isKeyPressed(SDL_Scancode key) const
 {
 	if (keyboardState[key])
 		return (true);
