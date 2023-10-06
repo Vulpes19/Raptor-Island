@@ -12,6 +12,7 @@ set(SOURCES
     src/InputDetector.cpp
     src/GameObjectFactory.cpp
     src/Vector.cpp
+    src/InputManager.cpp
 )
 
 set(HEADERS
@@ -24,6 +25,7 @@ set(HEADERS
     include/InputDetector.hpp
     include/GameObjectFactory.hpp
     include/Vector.hpp
+    include/InputManager.hpp
 )
 
 include_directories(include)

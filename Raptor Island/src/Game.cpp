@@ -18,7 +18,13 @@ Game::Game(void)
 	if (renderer == NULL)
 		throw(ErrorHandler("SDL renderer failed to initialise: " + std::string(SDL_GetError()), __FILE__, __LINE__));
 	running = true;
+	input = new InputManager();
 	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
+	InputObserver* playerObserver = dynamic_cast<InputObserver*>(player);
+	if (playerObserver)
+		input->addObserver(playerObserver);
+	else
+		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
 }
 
 Game::~Game(void)

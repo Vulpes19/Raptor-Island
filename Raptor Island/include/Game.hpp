@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 #include "ErrorHandler.hpp"
 #include "GameObjectFactory.hpp"
+#include "InputManager.hpp"
 
 class Game
 {
@@ -25,5 +26,6 @@ class Game
 		SDL_Event	event;
 		GameObject	*player;
 		GameObjectFactory factory;
+		InputManager* input;
 		bool	running = false;
 };

@@ -12,7 +12,7 @@ class InputManager
 		~InputManager(void);
 		void	addObserver(InputObserver*);
 		void	eraseObserver(InputObserver*);
-		void	notifyOnKeyDown(void);
+		void	notifyOnKeyDown(SDL_Scancode);
 	private:
 		std::vector<InputObserver*> observers;
 };

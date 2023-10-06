@@ -4,7 +4,7 @@
 #include "InputObserver.hpp"
 #include "InputDetector.hpp"
 
-class Player : public GameObject, public InputObserver
+class Player : public InputObserver, public GameObject
 {
 	public:
 		Player(std::string);
