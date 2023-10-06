@@ -8,7 +8,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "ErrorHandler.hpp"
-#include "Player.hpp"
+#include "GameObjectFactory.hpp"
 
 class Game
 {
@@ -24,5 +24,6 @@ class Game
 		SDL_Renderer* renderer = nullptr;
 		SDL_Event	event;
 		GameObject	*player;
+		GameObjectFactory factory;
 		bool	running = false;
 };

@@ -18,6 +18,7 @@ Game::Game(void)
 	if (renderer == NULL)
 		throw(ErrorHandler("SDL renderer failed to initialise: " + std::string(SDL_GetError()), __FILE__, __LINE__));
 	running = true;
+	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
 }
 
 Game::~Game(void)
@@ -37,7 +38,8 @@ void	Game::handleInput(void)
 
 void	Game::render(void)
 {
-	player->render();
+	player->render(renderer);
+	SDL_RenderPresent(renderer);
 }
 
 void	Game::update(void)

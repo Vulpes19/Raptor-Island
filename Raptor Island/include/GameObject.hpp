@@ -3,7 +3,7 @@
 #include "TextureManager.hpp"
 #include "Vector.hpp"
 
-enum type
+enum class TYPES
 {
 	PLAYER,
 	RAPTOR

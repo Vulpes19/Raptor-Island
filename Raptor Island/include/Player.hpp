@@ -11,5 +11,6 @@ class Player : public GameObject, public InputObserver
 		virtual ~Player(void);
 		void	handleInput(void) override {};
 		void	keyDown(SDL_Scancode) override;
+		void	mouseMove(void) override {};
 		void	update(void) override;
 };

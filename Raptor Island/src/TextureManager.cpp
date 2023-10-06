@@ -21,7 +21,7 @@ TextureManager::~TextureManager(void)
 TextureManager* TextureManager::getInstance(void)
 {
 	if (instance == nullptr)
-		return (new TextureManager());
+		instance = new TextureManager();
 	return (instance);
 }
 
@@ -38,6 +38,9 @@ void	TextureManager::loadImage(const char* imgPath, std::string name, SDL_Render
 	if (!texture)
 		throw(ErrorHandler("Unable to create texture from surface: " + std::string(IMG_GetError()), __FILE__, __LINE__));
 	textures[name] = texture;
+	/*
+	std::cout << name << std::endl;
+	std::cout << textures.count(name) << std::endl;*/
 }
 
 SDL_Texture* TextureManager::getTexture(std::string name)
