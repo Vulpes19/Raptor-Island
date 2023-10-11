@@ -9,6 +9,7 @@ int main(int ac, char **av)
 
 	while (game->isRunning())
 	{
+		game->updateDeltaTime();
 		game->handleInput();
 		game->update();
 		game->render();

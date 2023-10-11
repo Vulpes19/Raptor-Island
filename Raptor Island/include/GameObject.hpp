@@ -15,11 +15,11 @@ class GameObject
 		GameObject(std::string);
 		~GameObject(void);
 		virtual void	handleInput(void);
-		virtual void	update(void);
+		virtual void	update(double);
 		void	render(SDL_Renderer *);
-	private:
+	protected:
 		Vector	position;
 		Vector	velocity;
-		double	acceleration;
+		Vector	acceleration;
 		std::string	textureName;
 };

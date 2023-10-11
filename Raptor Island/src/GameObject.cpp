@@ -9,7 +9,7 @@ GameObject::~GameObject(void)
 void	GameObject::handleInput(void)
 {}
 
-void	GameObject::update(void)
+void	GameObject::update(double)
 {}
 
 void	GameObject::render(SDL_Renderer* renderer)

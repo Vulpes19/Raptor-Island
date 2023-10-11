@@ -10,7 +10,7 @@ class Player : public InputObserver, public GameObject
 		Player(std::string);
 		virtual ~Player(void);
 		void	handleInput(void) override {};
-		void	keyDown(SDL_Scancode) override;
+		void	keyDown(SDL_Scancode, double) override;
 		void	mouseMove(void) override {};
-		void	update(void) override;
+		void	update(double) override;
 };

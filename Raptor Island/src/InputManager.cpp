@@ -17,8 +17,8 @@ void	InputManager::eraseObserver(InputObserver* observer)
 	observers.erase(it);
 }
 
-void	InputManager::notifyOnKeyDown(SDL_Scancode key)
+void	InputManager::notifyOnKeyDown(SDL_Scancode key, double deltaTime)
 {
 	for (auto observer : observers)
-		observer->keyDown(key);
+		observer->keyDown(key, deltaTime);
 }

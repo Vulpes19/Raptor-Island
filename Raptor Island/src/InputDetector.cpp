@@ -11,7 +11,7 @@ InputDetector::~InputDetector(void)
 InputDetector* InputDetector::getInstance(void)
 {
 	if (instance == nullptr)
-		return (new InputDetector());
+		instance = new InputDetector();
 	return (instance);
 }
 

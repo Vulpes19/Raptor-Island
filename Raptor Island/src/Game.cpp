@@ -25,6 +25,7 @@ Game::Game(void)
 		input->addObserver(playerObserver);
 	else
 		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
+	prevTime = Clock::now();
 }
 
 Game::~Game(void)
@@ -39,19 +40,32 @@ void	Game::handleInput(void)
 	{
 		if (event.type == SDL_QUIT)
 			running = false;
+		if (event.type == SDL_KEYDOWN)
+			input->notifyOnKeyDown(event.key.keysym.scancode, deltaTime);
 	}
 }
 
 void	Game::render(void)
 {
+	SDL_RenderClear(renderer);
 	player->render(renderer);
 	SDL_RenderPresent(renderer);
 }
 
 void	Game::update(void)
-{}
+{
+	player->update(deltaTime);
+}
 
 bool	Game::isRunning(void) const
 {
 	return (running);
+}
+
+void	Game::updateDeltaTime(void)
+{
+	currTime = Clock::now();
+	std::chrono::duration<double> duration = currTime - prevTime;
+	deltaTime = duration.count();
+	prevTime = Clock::now();
 }
