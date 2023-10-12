@@ -16,21 +16,25 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime)
 		if (key == SDL_SCANCODE_S)
 		{
 			velocity.setY(velocity.getY() + acceleration.getY());
+			velocity.setX(0);
 			std::cout << "W is pressed" << std::endl;
 		}
 		if (key == SDL_SCANCODE_W)
 		{
 			velocity.setY(velocity.getY() - acceleration.getY());
+			velocity.setX(0);
 			std::cout << "S is pressed" << std::endl;
 		}
 		if (key == SDL_SCANCODE_A)
 		{
 			velocity.setX(velocity.getX() - acceleration.getX());
+			velocity.setY(0);
 			std::cout << "A is pressed" << std::endl;
 		}
 		if (key == SDL_SCANCODE_D)
 		{
 			velocity.setX(velocity.getX() + acceleration.getX());
+			velocity.setY(0);
 			std::cout << "D is pressed" << std::endl;
 		}
 	}
