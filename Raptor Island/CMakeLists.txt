@@ -13,6 +13,8 @@ set(SOURCES
     src/GameObjectFactory.cpp
     src/Vector.cpp
     src/InputManager.cpp
+    src/LevelBuilder.cpp
+    src/Level.cpp
 )
 
 set(HEADERS
@@ -26,6 +28,8 @@ set(HEADERS
     include/GameObjectFactory.hpp
     include/Vector.hpp
     include/InputManager.hpp
+    include/LevelBuilder.hpp
+    include/Level.hpp
 )
 
 include_directories(include)
