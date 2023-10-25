@@ -21,12 +21,5 @@ std::vector<std::vector<char>>	LevelBuilder::loadLevel(const char *filePath)
 		std::copy(temp.begin(), temp.end(), std::back_inserter(line));
 		ret.push_back(line);
 	}
-	
-	for (auto s : ret)
-	{
-		for (auto i : s)
-			std::cout << i;
-		std::cout << std::endl;
-	}
 	return (ret);
 }

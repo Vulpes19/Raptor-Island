@@ -24,6 +24,11 @@
 					"name": "SDL2_DIR",
 					"value": "C:/Users/asus/Documents/vcpkg/installed/x86-windows/share/sdl2",
 					"type": "PATH"
+				},
+				{
+					"name": "FREETYPE_DIR",
+					"value": "C:/Users/asus/Documents/vcpkg/installed/x86-windows/share/freetype",
+					"type": "PATH"
 				}
 			],
 			"inheritEnvironments": []

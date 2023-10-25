@@ -7,6 +7,13 @@
 #include "TextureManager.hpp"
 #include <map>
 
+enum GameResult
+{
+	WIN,
+	LOSS,
+	NONE
+};
+
 class Level
 {
 	public:
@@ -15,8 +22,10 @@ class Level
 		void	generateLevel(std::string, std::string);
 		void	render(SDL_Renderer *);
 		void	update(void);
+		GameResult	getResult(void) const;
 	private:
 		std::vector<std::vector<char>> levelStr;
 		LevelBuilder builder;
 		std::map<std::string, std::string>	levelPaths;
+		GameResult	result;
 };

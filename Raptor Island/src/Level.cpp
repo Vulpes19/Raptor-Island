@@ -13,6 +13,7 @@ Level::~Level(void)
 void	Level::generateLevel(std::string level, std::string path)
 {
 	levelPaths[level] = path;
+	levelStr.clear();
 	levelStr = builder.loadLevel(levelPaths[level].c_str());
 }
 
@@ -45,3 +46,8 @@ void	Level::render(SDL_Renderer *renderer)
 
 void	Level::update(void)
 {}
+
+GameResult	Level::getResult(void) const
+{
+	return (result);
+}
