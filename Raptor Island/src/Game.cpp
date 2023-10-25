@@ -26,6 +26,8 @@ Game::Game(void)
 	else
 		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
 	prevTime = Clock::now();
+	level = new Level(renderer);
+	level->generateLevel("test", "C:/Users/asus/source/repos/Raptor Island/assets/levels/level_test.txt");
 }
 
 Game::~Game(void)
@@ -49,6 +51,7 @@ void	Game::render(void)
 {
 	SDL_RenderClear(renderer);
 	player->render(renderer);
+	level->render(renderer);
 	SDL_RenderPresent(renderer);
 }
 

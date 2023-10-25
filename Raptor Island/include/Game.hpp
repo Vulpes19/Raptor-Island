@@ -3,7 +3,7 @@
 
 #define SDL_MAIN_HANDLED
 #define WIDTH 1280
-#define HEIGHT 720
+#define HEIGHT 640
 
 #include <iostream>
 #include <SDL2/SDL.h>
@@ -11,6 +11,7 @@
 #include "ErrorHandler.hpp"
 #include "GameObjectFactory.hpp"
 #include "InputManager.hpp"
+#include "Level.hpp"
 
 class Game
 {
@@ -31,6 +32,7 @@ class Game
 		GameObject	*player;
 		GameObjectFactory factory;
 		InputManager* input;
+		Level* level;
 		Time	prevTime;
 		Time	currTime;
 		double			deltaTime;
