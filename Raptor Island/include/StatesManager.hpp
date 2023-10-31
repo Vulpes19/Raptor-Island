@@ -10,10 +10,10 @@ class StatesManager
 		~StatesManager(void);
 		void	addState(GameState*);
 		void	removeState(void);
-		enum STATES	getCurrentState(void) const;
 		void	handleInput(void);
 		void	update(void);
 		void	render(void);
+		enum STATES	getCurrentState(void) const;
 	private:
 		std::vector<GameState*> states;
 };

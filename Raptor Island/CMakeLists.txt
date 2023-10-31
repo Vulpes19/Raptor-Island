@@ -15,6 +15,7 @@ set(SOURCES
     src/InputManager.cpp
     src/LevelBuilder.cpp
     src/Level.cpp
+    src/TextManager.cpp
 )
 
 set(HEADERS
@@ -37,12 +38,13 @@ include_directories(include)
 #file(GLOB SOURCES "src/*.cpp")
 add_executable (RaptorIsland ${SOURCES} ${HEADERS})
 
-set(FREETYPE_DIR "C:/Users/asus/Documents/vcpkg/installed/x86-windows/share/freetype")
+#set(FREETYPE_DIR "C:/Users/asus/Documents/vcpkg/installed/x86-windows/share/freetype")
 #freetype
-find_package(FreeType REQUIRED)
+find_package(Freetype REQUIRED)
 
 #SDL2
 find_package(SDL2 CONFIG REQUIRED)
 find_package(SDL2_image CONFIG REQUIRED)
+find_package(SDL2_ttf CONFIG REQUIRED)
 
-target_link_libraries(RaptorIsland PRIVATE SDL2::SDL2 SDL2_image::SDL2_image FreeType::Freetype)
+target_link_libraries(RaptorIsland PRIVATE SDL2::SDL2 SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf Freetype::Freetype)
