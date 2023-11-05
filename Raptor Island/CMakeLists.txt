@@ -15,7 +15,7 @@ set(SOURCES
     src/InputManager.cpp
     src/LevelBuilder.cpp
     src/Level.cpp
-    src/TextManager.cpp
+    src/FontManager.cpp
 )
 
 set(HEADERS
@@ -31,7 +31,7 @@ set(HEADERS
     include/InputManager.hpp
     include/LevelBuilder.hpp
     include/Level.hpp
-    include/TextManager.hpp
+    include/FontManager.hpp
 )
 
 include_directories(include)

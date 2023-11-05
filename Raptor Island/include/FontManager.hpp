@@ -8,13 +8,13 @@
 #include <string>
 #include "ErrorHandler.hpp"
 
-class TextManager
+class FontManager
 {
 	public:
-		TextManager(void);
-		~TextManager(void);
+		FontManager(void);
+		~FontManager(void);
 		void	loadFonts(void);
-		void	render(SDL_Renderer*, std::string, std::string);
+		TTF_Font* getFont(std::string) const;
 	private:
 		std::map<std::string, TTF_Font *> fonts;
 };

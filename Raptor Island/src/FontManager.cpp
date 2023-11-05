@@ -1,6 +1,6 @@
-#include "TextManager.hpp"
+#include "FontManager.hpp"
 
-TextManager::TextManager(void)
+FontManager::FontManager(void)
 {
 	if (TTF_Init() == -1)
 	{
@@ -9,12 +9,12 @@ TextManager::TextManager(void)
 	loadFonts();
 }
 
-TextManager::~TextManager(void)
+FontManager::~FontManager(void)
 {
 	TTF_Quit();
 }
 
-void	TextManager::loadFonts(void)
+void	FontManager::loadFonts(void)
 {
 	std::string fontPaths[2] = { "C:/Users/asus/source/repos/Raptor Island/assets/fonts/Bangers.ttf",
 								"C:/Users/asus/source/repos/Raptor Island/assets/fonts/Mael.ttf" };
@@ -28,4 +28,9 @@ void	TextManager::loadFonts(void)
 		fonts[path.substr(pos, path.length() - pos - 4)] = font;
 		TTF_CloseFont(font);
 	}
+}
+
+void	FontManager::getFont(std::string ID)
+{
+	return (fonts[ID]);
 }
