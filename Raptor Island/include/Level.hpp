@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include "LevelBuilder.hpp"
 #include "TextureManager.hpp"
+#include "CollisionObserver.hpp"
 #include <map>
 
 enum GameResult
@@ -14,7 +15,7 @@ enum GameResult
 	NONE
 };
 
-class Level
+class Level : public CollisionObserver
 {
 	public:
 		Level(SDL_Renderer *);
@@ -23,6 +24,7 @@ class Level
 		void	render(SDL_Renderer *);
 		void	update(void);
 		GameResult	getResult(void) const;
+		bool		checkCollision(Vector) override { return false; };
 	private:
 		std::vector<std::vector<char>> levelStr;
 		LevelBuilder builder;

@@ -32,6 +32,7 @@ set(HEADERS
     include/LevelBuilder.hpp
     include/Level.hpp
     include/FontManager.hpp
+    include/CollisionObserver.hpp
 )
 
 include_directories(include)

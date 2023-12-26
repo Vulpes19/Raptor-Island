@@ -11,10 +11,12 @@
 class FontManager
 {
 	public:
-		FontManager(void);
 		~FontManager(void);
+		static FontManager	*getInstance(void);
 		void	loadFonts(void);
 		TTF_Font* getFont(std::string) const;
 	private:
+		FontManager(void);
 		std::map<std::string, TTF_Font *> fonts;
+		static FontManager* instance;
 };

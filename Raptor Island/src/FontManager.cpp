@@ -1,5 +1,14 @@
 #include "FontManager.hpp"
 
+FontManager* FontManager::instance = nullptr;
+
+FontManager* FontManager::getInstance(void)
+{
+	if (instance == nullptr)
+		instance = new FontManager();
+	return (instance);
+}
+
 FontManager::FontManager(void)
 {
 	if (TTF_Init() == -1)
@@ -30,7 +39,11 @@ void	FontManager::loadFonts(void)
 	}
 }
 
-void	FontManager::getFont(std::string ID)
+TTF_Font	*FontManager::getFont(std::string ID) const
 {
-	return (fonts[ID]);
+	auto it = fonts.find(ID);
+	if (it != fonts.end())
+		return (it->second);
+	else
+		return (NULL);
 }
