@@ -24,7 +24,7 @@ class Level : public CollisionObserver
 		void	render(SDL_Renderer *);
 		void	update(void);
 		GameResult	getResult(void) const;
-		bool		checkCollision(Vector) override { return false; };
+		COLLISION		checkCollision(Vector) override;
 	private:
 		std::vector<std::vector<char>> levelStr;
 		LevelBuilder builder;

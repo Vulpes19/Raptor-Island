@@ -16,6 +16,7 @@ class Player : public InputObserver, public GameObject
 		void	update(double) override;
 		void	addCollisionObserver(CollisionObserver*);
 		void	eraseCollisionObserver(CollisionObserver*);
+		void	playerWasted(void);
 	private:
 		std::vector<CollisionObserver*> observers; //walls, enemies etc
 };

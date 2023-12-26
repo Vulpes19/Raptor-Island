@@ -17,17 +17,30 @@ Game::Game(void)
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	if (renderer == NULL)
 		throw(ErrorHandler("SDL renderer failed to initialise: " + std::string(SDL_GetError()), __FILE__, __LINE__));
+
+	//init game stuff
 	running = true;
 	input = new InputManager();
 	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
+
+	//add player as an observer to input
 	InputObserver* playerObserver = dynamic_cast<InputObserver*>(player);
 	if (playerObserver)
 		input->addObserver(playerObserver);
 	else
 		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
 	prevTime = Clock::now();
+
+	//creating level
 	level = new Level(renderer);
 	level->generateLevel("test", "C:/Users/asus/source/repos/Raptor Island/assets/levels/level_test.txt");
+
+	//adding level as an observer to collision
+	Player *testPlayer = dynamic_cast<Player*>(player);
+	if (testPlayer)
+		testPlayer->addCollisionObserver(level);
+	else
+		throw(ErrorHandler("casting error, causes the collision to not work: ", __FILE__, __LINE__));
 }
 
 Game::~Game(void)

@@ -2,6 +2,8 @@
 
 Player::Player(std::string textureName) : GameObject(textureName)
 {
+	position.setX(80);
+	position.setY(80);
 	acceleration.setX(0.1);
 	acceleration.setY(0.1);
 }
@@ -47,7 +49,20 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime)
 
 void	Player::update(double deltaTime)
 {
-	position = position + velocity;
+	for (auto observer : observers)
+	{
+		enum COLLISION type = observer->checkCollision(position + velocity);
+		switch (type) {
+			case COLLISION::WALL:
+				break;
+			case COLLISION::ENEMY:
+				playerWasted();
+				return;
+			default:
+				position = position + velocity;
+				break;
+		}
+	}
 	if (position.getX() < MIN_X)
 	{
 		position.setX(MIN_X);
@@ -79,4 +94,9 @@ void	Player::eraseCollisionObserver(CollisionObserver* observer)
 {
 	auto it = std::find(observers.begin(), observers.end(), observer);
 	observers.erase(it);
+}
+
+void	Player::playerWasted()
+{
+
 }
