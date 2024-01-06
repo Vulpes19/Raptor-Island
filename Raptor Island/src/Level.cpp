@@ -20,9 +20,10 @@ void	Level::generateLevel(std::string level, std::string path)
 void	Level::render(SDL_Renderer *renderer)
 {
 	SDL_Texture* ground = TextureManager::getInstance()->getTexture("green");
-	/*if (!ground)
+	if (!ground)
 	{
-	}*/
+		throw(ErrorHandler("Error loading texture: " + std::string(SDL_GetError()), __FILE__, __LINE__));
+	}
 	SDL_Rect	src, dest;
 
 	//std::cout << "new map\n";
@@ -59,7 +60,12 @@ COLLISION	Level::checkCollision(Vector position)
 {
 	int col = static_cast<int>(position.getX() / 64);
 	int row = static_cast<int>(position.getY() / 64);
-	if (row >= 0 && col >= 0 && row < levelStr.size() && col < levelStr[row].size() && levelStr[row][col] == '1')
+	int col2 = static_cast<int>((position.getX() + 64) / 64);
+	int row2 = static_cast<int>((position.getY() + 64) / 64);
+
+	//std::cout << "row 7 col 4 " << levelStr[7][4] << std::endl;
+	if (row >= 0 && row2 >= 0 && col >= 0 && col2 >= 0 && row < levelStr.size() && col < levelStr[row].size() && row2 < levelStr.size() && col2 < levelStr[row2].size()
+		&& (levelStr[row][col] == '1' || levelStr[row2][col2] == '1' || levelStr[row][col2] == '1' || levelStr[row2][col] == '1'))
 	{
 		std::cout << "size " << levelStr.size() << std::endl;
 		std::cout << "wall: " << levelStr[row][col] << " row: " << row << " col: " << col << std::endl;

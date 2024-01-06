@@ -54,6 +54,8 @@ void	Player::update(double deltaTime)
 		enum COLLISION type = observer->checkCollision(position + velocity);
 		switch (type) {
 			case COLLISION::WALL:
+				velocity.setX(0);
+				velocity.setY(0);
 				break;
 			case COLLISION::ENEMY:
 				playerWasted();
