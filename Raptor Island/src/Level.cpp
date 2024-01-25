@@ -63,12 +63,9 @@ COLLISION	Level::checkCollision(Vector position)
 	int col2 = static_cast<int>((position.getX() + 64) / 64);
 	int row2 = static_cast<int>((position.getY() + 64) / 64);
 
-	//std::cout << "row 7 col 4 " << levelStr[7][4] << std::endl;
 	if (row >= 0 && row2 >= 0 && col >= 0 && col2 >= 0 && row < levelStr.size() && col < levelStr[row].size() && row2 < levelStr.size() && col2 < levelStr[row2].size()
 		&& (levelStr[row][col] == '1' || levelStr[row2][col2] == '1' || levelStr[row][col2] == '1' || levelStr[row2][col] == '1'))
 	{
-		std::cout << "size " << levelStr.size() << std::endl;
-		std::cout << "wall: " << levelStr[row][col] << " row: " << row << " col: " << col << std::endl;
 		return COLLISION::WALL;
 	}
 	return COLLISION::NO_COLLISION;

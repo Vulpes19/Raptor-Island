@@ -16,6 +16,7 @@ set(SOURCES
     src/LevelBuilder.cpp
     src/Level.cpp
     src/FontManager.cpp
+    src/UILabel.cpp
 )
 
 set(HEADERS
@@ -33,6 +34,7 @@ set(HEADERS
     include/Level.hpp
     include/FontManager.hpp
     include/CollisionObserver.hpp
+    include/UILabel.hpp
 )
 
 include_directories(include)
