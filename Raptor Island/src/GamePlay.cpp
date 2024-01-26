@@ -18,7 +18,7 @@ void	GamePlay::update(void) override
 
 }
 
-void	GamePlay::render(void) override
+void	GamePlay::render(SDL_Renderer *renderer) override
 {
 
 }

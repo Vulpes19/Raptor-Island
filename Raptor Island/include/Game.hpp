@@ -12,6 +12,8 @@
 #include "GameObjectFactory.hpp"
 #include "InputManager.hpp"
 #include "Level.hpp"
+#include "StatesManager.hpp"
+#include "MainMenu.hpp"
 
 class Game
 {
@@ -29,10 +31,11 @@ class Game
 		SDL_Window* window = nullptr;
 		SDL_Renderer* renderer = nullptr;
 		SDL_Event	event;
-		GameObject	*player;
+		GameObject	*player = nullptr;
 		GameObjectFactory factory;
-		InputManager* input;
-		Level* level;
+		InputManager* input = nullptr;
+		StatesManager* state = nullptr;
+		Level* level = nullptr;
 		Time	prevTime;
 		Time	currTime;
 		double			deltaTime;

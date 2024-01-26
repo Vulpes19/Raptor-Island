@@ -41,10 +41,10 @@ void	StatesManager::update(void)
 	}
 }
 
-void	StatesManager::render(void)
+void	StatesManager::render(SDL_Renderer *renderer)
 {
 	if (!states.empty())
 	{
-		states.back()->render();
+		states.back()->render(renderer);
 	}
 }

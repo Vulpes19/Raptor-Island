@@ -16,7 +16,9 @@ class UILabel
 		~UILabel(void);
 		void	addButtonType(std::string, int, int, SDL_Color);
 		void	deleteButtonType(std::string);
-		void	render(int, int, std::string, std::string, std::string, SDL_Renderer*);
+		void	render(int x, int y, 
+			std::string ID, std::string content, 
+			std::string font, SDL_Renderer* renderer);
 	private:
-		std::map<std::string, Button> labels;
+		std::map<std::string, Button *> labels;
 };

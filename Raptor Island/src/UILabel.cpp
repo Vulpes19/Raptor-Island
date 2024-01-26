@@ -8,7 +8,7 @@ UILabel::~UILabel(void)
 
 void	UILabel::addButtonType(std::string ID, int h, int w, SDL_Color color)
 {
-	Button button = Button(h, w, color);
+	Button *button = new Button(h, w, color);
 	labels[ID] = button;
 }
 
@@ -17,21 +17,22 @@ void	UILabel::deleteButtonType(std::string ID)
 	auto it = labels.find(ID);
 	if (it != labels.end())
 	{
+		delete it->second;
 		labels.erase(ID);
 	}
 }
 
 void	UILabel::render(int x, int y, std::string ID, std::string content, std::string font, SDL_Renderer* renderer)
 {
-	SDL_Rect rect = { x, y, 200, 100 };
 	auto label = labels.find(ID);
 	if (label == labels.end())
 		throw(ErrorHandler("Can't find label with ID: " + ID, __FILE__, __LINE__));
+	SDL_Rect rect = { x, y, label->second->width, label->second->height };
 	SDL_SetRenderDrawColor(renderer,
-		label->second.color.r,
-		label->second.color.g,
-		label->second.color.b,
-		label->second.color.a);
+		label->second->color.r,
+		label->second->color.g,
+		label->second->color.b,
+		label->second->color.a);
 	//drawing the button rect
 	SDL_RenderFillRect(renderer, &rect);
 	TTF_Font* fontPtr = FontManager::getInstance()->getFont(font);

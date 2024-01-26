@@ -17,6 +17,8 @@ set(SOURCES
     src/Level.cpp
     src/FontManager.cpp
     src/UILabel.cpp
+    src/StatesManager.cpp
+    src/MainMenu.cpp
 )
 
 set(HEADERS
@@ -35,6 +37,9 @@ set(HEADERS
     include/FontManager.hpp
     include/CollisionObserver.hpp
     include/UILabel.hpp
+    include/GameState.hpp
+    include/StatesManager.hpp
+    include/MainMenu.hpp
 )
 
 include_directories(include)

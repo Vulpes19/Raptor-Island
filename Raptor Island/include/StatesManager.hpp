@@ -12,7 +12,7 @@ class StatesManager
 		void	removeState(void);
 		void	handleInput(void);
 		void	update(void);
-		void	render(void);
+		void	render(SDL_Renderer *);
 		enum STATES	getCurrentState(void) const;
 	private:
 		std::vector<GameState*> states;

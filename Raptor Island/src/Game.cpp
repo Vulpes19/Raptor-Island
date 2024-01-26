@@ -20,8 +20,11 @@ Game::Game(void)
 
 	//init game stuff
 	running = true;
+	FontManager::getInstance()->loadFonts();
 	input = new InputManager();
-	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
+	state = new StatesManager();
+	state->addState(new MainMenu());
+	/*player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
 
 	//add player as an observer to input
 	InputObserver* playerObserver = dynamic_cast<InputObserver*>(player);
@@ -41,6 +44,7 @@ Game::Game(void)
 		testPlayer->addCollisionObserver(level);
 	else
 		throw(ErrorHandler("casting error, causes the collision to not work: ", __FILE__, __LINE__));
+	*/
 }
 
 Game::~Game(void)
@@ -63,14 +67,16 @@ void	Game::handleInput(void)
 void	Game::render(void)
 {
 	SDL_RenderClear(renderer);
-	player->render(renderer);
-	level->render(renderer);
+	STATES currentState = state->getCurrentState();
+	state->render(renderer);
+	//player->render(renderer);
+	//level->render(renderer);
 	SDL_RenderPresent(renderer);
 }
 
 void	Game::update(void)
 {
-	player->update(deltaTime);
+	//player->update(deltaTime);
 }
 
 bool	Game::isRunning(void) const

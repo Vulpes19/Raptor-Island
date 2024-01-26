@@ -9,5 +9,5 @@ class MainMenu : public GameState
 		~MainMenu(void);
 		void handleInput(void) override;
 		void update(void) override;
-		void render(void) override;
+		void render(SDL_Renderer *) override;
 };
