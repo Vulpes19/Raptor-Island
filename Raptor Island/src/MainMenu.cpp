@@ -28,6 +28,22 @@ void	MainMenu::keyDown(SDL_Scancode key, double deltaTime)
 	}
 }
 
+void	MainMenu::mouseMove()
+{
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	if (x >= 540 && x <= 740 && y >= 300 && y <= 380)
+	{
+		buttonsState["Play"] = FOCUS_ON;
+		buttonsState["Quit"] = FOCUS_OFF;
+	}
+	if (x >= 540 && x <= 740 && y >= 400 && y <= 480)
+	{
+		buttonsState["Play"] = FOCUS_OFF;
+		buttonsState["Quit"] = FOCUS_ON;
+	}
+}
+
 void	MainMenu::handleInput(void)
 {
 

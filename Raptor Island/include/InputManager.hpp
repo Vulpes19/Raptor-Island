@@ -13,6 +13,7 @@ class InputManager
 		void	addObserver(InputObserver*);
 		void	eraseObserver(InputObserver*);
 		void	notifyOnKeyDown(SDL_Scancode, double);
+		void	notifyOnMouseMove();
 	private:
 		std::vector<InputObserver*> observers;
 };

@@ -28,7 +28,7 @@ Game::Game(void)
 	if (stateObserver)
 		input->addObserver(stateObserver);
 	else
-		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
+		throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
 	/*player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
 
 	//add player as an observer to input
@@ -68,6 +68,8 @@ void	Game::handleInput(void)
 			running = false;
 		if (event.type == SDL_KEYDOWN)
 			input->notifyOnKeyDown(event.key.keysym.scancode, deltaTime);
+		if (event.type == SDL_MOUSEMOTION)
+			input->notifyOnMouseMove();
 	}
 }
 
