@@ -25,6 +25,11 @@ enum STATES	StatesManager::getCurrentState(void) const
 	return (states.back()->getStateName());
 }
 
+GameState	*StatesManager::getCurrentStateInstance(void) const
+{
+	return (states.back());
+}
+
 void	StatesManager::handleInput(void)
 {
 	if (!states.empty())

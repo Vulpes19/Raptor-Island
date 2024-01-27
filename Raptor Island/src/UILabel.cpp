@@ -22,7 +22,7 @@ void	UILabel::deleteButtonType(std::string ID)
 	}
 }
 
-void	UILabel::render(int x, int y, std::string ID, std::string content, std::string font, SDL_Renderer* renderer)
+void	UILabel::render(int x, int y, std::string ID, std::string content, std::string font, SDL_Renderer* renderer, BUTTON_STATE state)
 {
 	auto label = labels.find(ID);
 	if (label == labels.end())
@@ -38,7 +38,10 @@ void	UILabel::render(int x, int y, std::string ID, std::string content, std::str
 	TTF_Font* fontPtr = FontManager::getInstance()->getFont(font);
 	if (fontPtr == NULL)
 		throw(ErrorHandler("Can't find font with ID: " + font, __FILE__, __LINE__));
-	SDL_Surface* textSurface = TTF_RenderText_Solid(fontPtr, content.c_str(), { 0, 0, 0, 255 });
+	SDL_Color textColor = { 0, 0, 0, 255 };
+	if (state == BUTTON_STATE::FOCUS_ON)
+		textColor = { 255, 255, 255, 255 };
+	SDL_Surface* textSurface = TTF_RenderText_Solid(fontPtr, content.c_str(), textColor);
 	if (textSurface == NULL)
 		throw(ErrorHandler("Error rendering text: " + std::string(TTF_GetError()), __FILE__, __LINE__));
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
@@ -49,5 +52,6 @@ void	UILabel::render(int x, int y, std::string ID, std::string content, std::str
 	int midY = rect.y + (rect.h - 60) / 2;
 	SDL_Rect textRect = { midX, midY, 160, 60 };
 	SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_DestroyTexture(textTexture);
 }

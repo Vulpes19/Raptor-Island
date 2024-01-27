@@ -24,6 +24,11 @@ Game::Game(void)
 	input = new InputManager();
 	state = new StatesManager();
 	state->addState(new MainMenu());
+	InputObserver* stateObserver = dynamic_cast<InputObserver*>(state->getCurrentStateInstance());
+	if (stateObserver)
+		input->addObserver(stateObserver);
+	else
+		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
 	/*player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
 
 	//add player as an observer to input
@@ -49,6 +54,8 @@ Game::Game(void)
 
 Game::~Game(void)
 {
+	delete input;
+	delete state;
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }

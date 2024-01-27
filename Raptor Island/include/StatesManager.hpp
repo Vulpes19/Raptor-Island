@@ -14,6 +14,7 @@ class StatesManager
 		void	update(void);
 		void	render(SDL_Renderer *);
 		enum STATES	getCurrentState(void) const;
+		GameState* StatesManager::getCurrentStateInstance(void) const;
 	private:
 		std::vector<GameState*> states;
 };
