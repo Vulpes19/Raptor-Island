@@ -1,5 +1,12 @@
 #include "StatesManager.hpp"
 
+StatesManager* StatesManager::getInstance(void)
+{
+	if (instance == nullptr)
+		instance = new StatesManager();
+	return (instance);
+}
+
 StatesManager::StatesManager(void)
 {}
 

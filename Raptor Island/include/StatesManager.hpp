@@ -6,8 +6,8 @@
 class StatesManager
 {
 	public:
-		StatesManager(void);
 		~StatesManager(void);
+		static StatesManager* getInstance(void);
 		void	addState(GameState*);
 		void	removeState(void);
 		void	handleInput(void);
@@ -16,5 +16,7 @@ class StatesManager
 		enum STATES	getCurrentState(void) const;
 		GameState* StatesManager::getCurrentStateInstance(void) const;
 	private:
+		StatesManager(void);
+		static StatesManager *instance;
 		std::vector<GameState*> states;
 };

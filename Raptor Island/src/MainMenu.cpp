@@ -25,6 +25,8 @@ void	MainMenu::keyDown(SDL_Scancode key, double deltaTime)
 			buttonsState["Play"] = FOCUS_ON;
 			buttonsState["Quit"] = FOCUS_OFF;
 		}
+		if (key == SDL_SCANCODE_RETURN && buttonsState["Play"] == FOCUS_ON)
+			StatesManager::getInstance()->addState(new LevelMenu());
 	}
 }
 
