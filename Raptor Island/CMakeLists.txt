@@ -19,6 +19,7 @@ set(SOURCES
     src/UILabel.cpp
     src/StatesManager.cpp
     src/MainMenu.cpp
+    src/LevelMenu.cpp
 )
 
 set(HEADERS
@@ -40,6 +41,7 @@ set(HEADERS
     include/GameState.hpp
     include/StatesManager.hpp
     include/MainMenu.hpp
+    include/LevelMenu.hpp
 )
 
 include_directories(include)

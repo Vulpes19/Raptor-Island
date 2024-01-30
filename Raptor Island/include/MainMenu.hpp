@@ -4,6 +4,7 @@
 #include "InputObserver.hpp"
 #include "InputDetector.hpp"
 #include "StatesManager.hpp"
+#include "LevelMenu.hpp"
 
 class MainMenu : public GameState, public InputObserver
 {

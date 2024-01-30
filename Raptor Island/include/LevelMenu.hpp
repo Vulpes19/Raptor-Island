@@ -3,6 +3,7 @@
 #include "GameState.hpp"
 #include "InputObserver.hpp"
 #include "InputDetector.hpp"
+#include "StatesManager.hpp"
 
 class LevelMenu : public GameState, public InputObserver
 {

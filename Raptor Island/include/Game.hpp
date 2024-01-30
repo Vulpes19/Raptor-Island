@@ -34,7 +34,6 @@ class Game
 		GameObject	*player = nullptr;
 		GameObjectFactory factory;
 		InputManager* input = nullptr;
-		StatesManager* state = nullptr;
 		Level* level = nullptr;
 		Time	prevTime;
 		Time	currTime;

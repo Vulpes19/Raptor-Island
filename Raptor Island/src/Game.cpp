@@ -22,9 +22,8 @@ Game::Game(void)
 	running = true;
 	FontManager::getInstance()->loadFonts();
 	input = new InputManager();
-	state = new StatesManager();
-	state->addState(new MainMenu());
-	InputObserver* stateObserver = dynamic_cast<InputObserver*>(state->getCurrentStateInstance());
+	StatesManager::getInstance()->addState(new MainMenu());
+	InputObserver* stateObserver = dynamic_cast<InputObserver*>(StatesManager::getInstance()->getCurrentStateInstance());
 	if (stateObserver)
 		input->addObserver(stateObserver);
 	else
@@ -55,7 +54,6 @@ Game::Game(void)
 Game::~Game(void)
 {
 	delete input;
-	delete state;
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
@@ -76,8 +74,8 @@ void	Game::handleInput(void)
 void	Game::render(void)
 {
 	SDL_RenderClear(renderer);
-	STATES currentState = state->getCurrentState();
-	state->render(renderer);
+	STATES currentState = StatesManager::getInstance()->getCurrentState();
+	StatesManager::getInstance()->render(renderer);
 	//player->render(renderer);
 	//level->render(renderer);
 	SDL_RenderPresent(renderer);
