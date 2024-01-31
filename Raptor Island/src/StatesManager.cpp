@@ -31,7 +31,10 @@ void	StatesManager::removeState(void)
 
 enum STATES	StatesManager::getCurrentState(void) const
 {
-	return (states.back()->getStateName());
+	if (states.empty())
+		return (NoState);
+	else
+		return (states.back()->getStateName());
 }
 
 GameState	*StatesManager::getCurrentStateInstance(void) const

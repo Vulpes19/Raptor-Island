@@ -1,6 +1,6 @@
 #include "FontManager.hpp"
 
-FontManager* FontManager::instance = nullptr;
+FontManager *FontManager::instance = nullptr;
 
 FontManager* FontManager::getInstance(void)
 {
@@ -35,7 +35,7 @@ void	FontManager::loadFonts(void)
 			throw(ErrorHandler("Unable to open font: " + std::string(TTF_GetError()), __FILE__, __LINE__));
 		size_t pos = path.find_last_of("/");
 		std::cout << path.substr(pos + 1, path.length() - pos - 5) << std::endl;
-		fonts[path.substr(pos + 1, path.length() - pos - 5)] = font;
+		fonts[path.substr(pos + 1, path.length() - pos - 5)] = std::unique_ptr<TTF_Font, decltype(&TTF_CloseFont)>(font, TTF_CloseFont);
 		//TTF_CloseFont(font);
 	}
 }
@@ -44,7 +44,7 @@ TTF_Font	*FontManager::getFont(std::string ID) const
 {
 	auto it = fonts.find(ID);
 	if (it != fonts.end())
-		return (it->second);
+		return (it->second.get());
 	else
 		return (NULL);
 }

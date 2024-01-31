@@ -28,7 +28,7 @@ void	LevelMenu::keyDown(SDL_Scancode key, double deltaTime)
 	}
 }
 
-void	LevelMenu::mouseMove()
+void	LevelMenu::mouseMove(Uint8)
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);

@@ -12,7 +12,7 @@ public:
 	~LevelMenu(void);
 	void handleInput(void) override;
 	void keyDown(SDL_Scancode, double) override;
-	void mouseMove(void) override;
+	void mouseMove(Uint8) override;
 	void update(void) override;
 	void render(SDL_Renderer*) override;
 private:

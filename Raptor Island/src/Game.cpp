@@ -62,12 +62,19 @@ void	Game::handleInput(void)
 {
 	while (SDL_PollEvent(&event))
 	{
-		if (event.type == SDL_QUIT)
-			running = false;
-		if (event.type == SDL_KEYDOWN)
-			input->notifyOnKeyDown(event.key.keysym.scancode, deltaTime);
-		if (event.type == SDL_MOUSEMOTION)
-			input->notifyOnMouseMove();
+		switch (event.type)
+		{
+			case SDL_QUIT:
+				running = false;
+				break;
+			case SDL_KEYDOWN:
+				input->notifyOnKeyDown(event.key.keysym.scancode, deltaTime);
+				break;
+			case SDL_MOUSEMOTION:
+				input->notifyOnMouseMove(0);
+			case SDL_MOUSEBUTTONDOWN:
+				input->notifyOnMouseMove(event.button.button);
+		}
 	}
 }
 
@@ -83,6 +90,8 @@ void	Game::render(void)
 
 void	Game::update(void)
 {
+	//if (StatesManager::getInstance()->getCurrentState() == NoState)
+		//running = false;
 	//player->update(deltaTime);
 }
 

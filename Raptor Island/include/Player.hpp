@@ -12,7 +12,7 @@ class Player : public InputObserver, public GameObject
 		virtual ~Player(void);
 		void	handleInput(void) override {};
 		void	keyDown(SDL_Scancode, double) override;
-		void	mouseMove(void) override {};
+		void	mouseMove(Uint8) override {};
 		void	update(double) override;
 		void	addCollisionObserver(CollisionObserver*);
 		void	eraseCollisionObserver(CollisionObserver*);

@@ -30,7 +30,7 @@ void	MainMenu::keyDown(SDL_Scancode key, double deltaTime)
 	}
 }
 
-void	MainMenu::mouseMove()
+void	MainMenu::mouseMove(Uint8 mouseButton)
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
@@ -38,6 +38,8 @@ void	MainMenu::mouseMove()
 	{
 		buttonsState["Play"] = FOCUS_ON;
 		buttonsState["Quit"] = FOCUS_OFF;
+		if (mouseButton == SDL_BUTTON_LEFT)
+			StatesManager::getInstance()->addState(new LevelMenu());
 	}
 	if (x >= 540 && x <= 740 && y >= 400 && y <= 480)
 	{

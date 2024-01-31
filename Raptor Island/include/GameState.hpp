@@ -3,6 +3,7 @@
 #include "UILabel.hpp"
 
 enum STATES {
+	NoState,
 	MainMenuState,
 	LevelMenuState,
 	GamePlayState,
@@ -20,5 +21,5 @@ class GameState
 		enum STATES		getStateName(void) const { return (stateName); }
 	protected:
 		UILabel		label;
-		enum STATES stateName;
+		enum STATES stateName = NoState;
 };

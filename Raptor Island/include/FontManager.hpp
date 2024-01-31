@@ -17,6 +17,6 @@ class FontManager
 		TTF_Font* getFont(std::string) const;
 	private:
 		FontManager(void);
-		std::map<std::string, TTF_Font *> fonts;
+		std::map<std::string, std::unique_ptr<TTF_Font, decltype(&TTF_CloseFont)>> fonts;
 		static FontManager* instance;
 };
