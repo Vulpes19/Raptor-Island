@@ -11,24 +11,34 @@ LevelMenu::LevelMenu(void)
 LevelMenu::~LevelMenu(void)
 {}
 
-void	LevelMenu::keyDown(SDL_Scancode key, double deltaTime)
+void	LevelMenu::keyDown(SDL_Scancode key, double deltaTime, InputManager *input, SDL_Renderer* renderer)
 {
 	if (InputDetector::getInstance()->isKeyPressed(key))
 	{
 		if (key == SDL_SCANCODE_RIGHT)
 		{
-			buttonsState["Play"] = FOCUS_OFF;
-			buttonsState["Quit"] = FOCUS_ON;
+			buttonsState["Level1"] = FOCUS_OFF;
+			buttonsState["Level2"] = FOCUS_ON;
 		}
 		if (key == SDL_SCANCODE_LEFT)
 		{
-			buttonsState["Play"] = FOCUS_ON;
-			buttonsState["Quit"] = FOCUS_OFF;
+			buttonsState["Level1"] = FOCUS_ON;
+			buttonsState["Level2"] = FOCUS_OFF;
+		}
+		if (key == SDL_SCANCODE_RETURN && buttonsState["Level1"] == FOCUS_ON)
+		{
+			std::cout << "gameplay menu is pushed" << std::endl;
+			StatesManager::getInstance()->addState(new GamePlay(input, renderer));
+			InputObserver* gamePlayObserver = dynamic_cast<InputObserver*>(StatesManager::getInstance()->getCurrentStateInstance());
+			if (gamePlayObserver)
+				input->addObserver(gamePlayObserver);
+			else
+				throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
 		}
 	}
 }
 
-void	LevelMenu::mouseMove(Uint8)
+void	LevelMenu::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer* renderer)
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
@@ -36,6 +46,16 @@ void	LevelMenu::mouseMove(Uint8)
 	{
 		buttonsState["Level1"] = FOCUS_ON;
 		buttonsState["Level2"] = FOCUS_OFF;
+		if (mouseButton == SDL_BUTTON_LEFT)
+		{
+			std::cout << "gameplay menu is pushed" << std::endl;
+			StatesManager::getInstance()->addState(new GamePlay(input, renderer));
+			InputObserver* gamePlayObserver = dynamic_cast<InputObserver*>(StatesManager::getInstance()->getCurrentStateInstance());
+			if (gamePlayObserver)
+				input->addObserver(gamePlayObserver);
+			else
+				throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
+		}
 	}
 	if (x >= 540 && x <= 640 && y >= 400 && y <= 500)
 	{

@@ -31,10 +31,7 @@ class Game
 		SDL_Window* window = nullptr;
 		SDL_Renderer* renderer = nullptr;
 		SDL_Event	event;
-		GameObject	*player = nullptr;
-		GameObjectFactory factory;
 		InputManager* input = nullptr;
-		Level* level = nullptr;
 		Time	prevTime;
 		Time	currTime;
 		double			deltaTime;

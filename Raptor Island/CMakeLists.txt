@@ -20,6 +20,7 @@ set(SOURCES
     src/StatesManager.cpp
     src/MainMenu.cpp
     src/LevelMenu.cpp
+    src/GamePlay.cpp
 )
 
 set(HEADERS
@@ -42,6 +43,7 @@ set(HEADERS
     include/StatesManager.hpp
     include/MainMenu.hpp
     include/LevelMenu.hpp
+    include/GamePlay.hpp
 )
 
 include_directories(include)

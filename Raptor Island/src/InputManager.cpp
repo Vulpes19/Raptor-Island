@@ -17,14 +17,14 @@ void	InputManager::eraseObserver(InputObserver* observer)
 	observers.erase(it);
 }
 
-void	InputManager::notifyOnKeyDown(SDL_Scancode key, double deltaTime)
+void	InputManager::notifyOnKeyDown(SDL_Scancode key, double deltaTime, SDL_Renderer *renderer)
 {
 	for (auto observer : observers)
-		observer->keyDown(key, deltaTime);
+		observer->keyDown(key, deltaTime, this, renderer);
 }
 
-void	InputManager::notifyOnMouseMove(Uint8 mouseButton)
+void	InputManager::notifyOnMouseMove(Uint8 mouseButton, SDL_Renderer* renderer)
 {
 	for (auto observer : observers)
-		observer->mouseMove(mouseButton);
+		observer->mouseMove(mouseButton, this, renderer);
 }

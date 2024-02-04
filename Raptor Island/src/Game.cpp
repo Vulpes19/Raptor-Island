@@ -68,12 +68,12 @@ void	Game::handleInput(void)
 				running = false;
 				break;
 			case SDL_KEYDOWN:
-				input->notifyOnKeyDown(event.key.keysym.scancode, deltaTime);
+				input->notifyOnKeyDown(event.key.keysym.scancode, deltaTime, renderer);
 				break;
 			case SDL_MOUSEMOTION:
-				input->notifyOnMouseMove(0);
+				input->notifyOnMouseMove(0, renderer);
 			case SDL_MOUSEBUTTONDOWN:
-				input->notifyOnMouseMove(event.button.button);
+				input->notifyOnMouseMove(event.button.button, renderer);
 		}
 	}
 }
@@ -83,8 +83,6 @@ void	Game::render(void)
 	SDL_RenderClear(renderer);
 	STATES currentState = StatesManager::getInstance()->getCurrentState();
 	StatesManager::getInstance()->render(renderer);
-	//player->render(renderer);
-	//level->render(renderer);
 	SDL_RenderPresent(renderer);
 }
 
