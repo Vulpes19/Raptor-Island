@@ -27,6 +27,8 @@ void	MainMenu::keyDown(SDL_Scancode key, double deltaTime)
 		}
 		if (key == SDL_SCANCODE_RETURN && buttonsState["Play"] == FOCUS_ON)
 			StatesManager::getInstance()->addState(new LevelMenu());
+		if (key == SDL_SCANCODE_RETURN && buttonsState["Quit"] == FOCUS_ON)
+			StatesManager::getInstance()->removeState();
 	}
 }
 
@@ -45,6 +47,8 @@ void	MainMenu::mouseMove(Uint8 mouseButton)
 	{
 		buttonsState["Play"] = FOCUS_OFF;
 		buttonsState["Quit"] = FOCUS_ON;
+		if (mouseButton == SDL_BUTTON_LEFT)
+			StatesManager::getInstance()->removeState();
 	}
 }
 

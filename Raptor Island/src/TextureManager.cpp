@@ -18,6 +18,7 @@ TextureManager::~TextureManager(void)
 	IMG_Quit();
 }
 
+
 TextureManager* TextureManager::getInstance(void)
 {
 	if (instance == nullptr)
@@ -59,4 +60,10 @@ void	TextureManager::removeTexture(std::string name)
 		SDL_DestroyTexture(it->second);
 		textures.erase(name);
 	}
+}
+
+void	TextureManager::clean(void)
+{
+	delete instance;
+	instance = nullptr;
 }

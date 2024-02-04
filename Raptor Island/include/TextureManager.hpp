@@ -14,6 +14,7 @@ class TextureManager
 		void	loadImage(const char*, std::string, SDL_Renderer *);
 		SDL_Texture* getTexture(std::string);
 		void	removeTexture(std::string);
+		static void	clean(void);
 	private:
 		TextureManager(void);
 		std::map<std::string, SDL_Texture*> textures;

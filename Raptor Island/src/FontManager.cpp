@@ -20,6 +20,11 @@ FontManager::FontManager(void)
 
 FontManager::~FontManager(void)
 {
+	for (auto it = fonts.begin(); it != fonts.end(); ++it)
+	{
+		TTF_CloseFont(it->second);
+	}
+	fonts.clear();
 	TTF_Quit();
 }
 
@@ -35,8 +40,7 @@ void	FontManager::loadFonts(void)
 			throw(ErrorHandler("Unable to open font: " + std::string(TTF_GetError()), __FILE__, __LINE__));
 		size_t pos = path.find_last_of("/");
 		std::cout << path.substr(pos + 1, path.length() - pos - 5) << std::endl;
-		fonts[path.substr(pos + 1, path.length() - pos - 5)] = std::unique_ptr<TTF_Font, decltype(&TTF_CloseFont)>(font, TTF_CloseFont);
-		//TTF_CloseFont(font);
+		fonts[path.substr(pos + 1, path.length() - pos - 5)] = font;
 	}
 }
 
@@ -44,7 +48,13 @@ TTF_Font	*FontManager::getFont(std::string ID) const
 {
 	auto it = fonts.find(ID);
 	if (it != fonts.end())
-		return (it->second.get());
+		return (it->second);
 	else
 		return (NULL);
+}
+
+void	FontManager::clean(void)
+{
+	delete instance;
+	instance = nullptr;
 }

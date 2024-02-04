@@ -90,8 +90,12 @@ void	Game::render(void)
 
 void	Game::update(void)
 {
-	//if (StatesManager::getInstance()->getCurrentState() == NoState)
-		//running = false;
+	if (StatesManager::getInstance()->getCurrentState() == NoState)
+	{
+		TextureManager::clean();
+		FontManager::clean();
+		running = false;
+	}
 	//player->update(deltaTime);
 }
 
