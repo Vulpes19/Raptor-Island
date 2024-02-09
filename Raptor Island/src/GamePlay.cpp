@@ -5,6 +5,7 @@ GamePlay::GamePlay(InputManager *input, SDL_Renderer *renderer)
 	stateName = GamePlayState;
 	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
 
+	std::cout << "im in constructor gameplay" << std::endl;
 	//add player as an observer to input
 	InputObserver* playerObserver = dynamic_cast<InputObserver*>(player);
 	if (playerObserver)

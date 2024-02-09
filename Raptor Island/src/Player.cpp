@@ -11,7 +11,7 @@ Player::Player(std::string textureName) : GameObject(textureName)
 Player::~Player(void)
 {}
 
-void	Player::keyDown(SDL_Scancode key, double deltaTime)
+void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Renderer*)
 {
 	const double accelerationLimit = 0.5;
 	if (InputDetector::getInstance()->isKeyPressed(key))

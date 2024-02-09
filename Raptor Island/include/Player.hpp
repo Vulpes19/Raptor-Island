@@ -11,8 +11,8 @@ class Player : public InputObserver, public GameObject
 		Player(std::string);
 		virtual ~Player(void);
 		void	handleInput(void) override {};
-		void	keyDown(SDL_Scancode, double) override;
-		void	mouseMove(Uint8) override {};
+		void	keyDown(SDL_Scancode, double, InputManager* = nullptr, SDL_Renderer* = nullptr) override;
+		void	mouseMove(Uint8, InputManager* = nullptr, SDL_Renderer* = nullptr) override {};
 		void	update(double) override;
 		void	addCollisionObserver(CollisionObserver*);
 		void	eraseCollisionObserver(CollisionObserver*);

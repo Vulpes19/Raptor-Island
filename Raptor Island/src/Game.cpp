@@ -94,6 +94,7 @@ void	Game::update(void)
 		FontManager::clean();
 		running = false;
 	}
+	StatesManager::getInstance()->update();
 	//player->update(deltaTime);
 }
 

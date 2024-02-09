@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <vector>
 
+class InputObserver;
+
 class InputManager
 {
 	public:
