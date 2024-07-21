@@ -6,6 +6,8 @@
 #include "GameObjectFactory.hpp"
 #include "Level.hpp"
 #include "InputManager.hpp"
+#include "StatesManager.hpp"
+#include "PauseMenu.hpp"
 
 class GamePlay : public GameState, public InputObserver
 {

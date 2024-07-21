@@ -3,7 +3,7 @@
 GamePlay::GamePlay(InputManager *input, SDL_Renderer *renderer)
 {
 	stateName = GamePlayState;
-	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/test_player.png", renderer);
+	player = factory.createGameObject(TYPES::PLAYER, "player", "C:/Users/asus/source/repos/Raptor Island/assets/textures/player.png", renderer);
 
 	std::cout << "im in constructor gameplay" << std::endl;
 	//add player as an observer to input
@@ -29,7 +29,18 @@ GamePlay::~GamePlay(void)
 
 void	GamePlay::keyDown(SDL_Scancode key, double deltaTime, InputManager* input, SDL_Renderer* renderer)
 {
-	std::cout << "helo" << std::endl;
+	if (InputDetector::getInstance()->isKeyPressed(key))
+	{
+		if (key == SDL_SCANCODE_ESCAPE)
+		{
+			StatesManager::getInstance()->addState(new PauseMenu());
+			InputObserver* pauseObserver = dynamic_cast<InputObserver*>(StatesManager::getInstance()->getCurrentStateInstance());
+			if (pauseObserver)
+				input->addObserver(pauseObserver);
+			else
+				throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
+		}
+	}
 }
 
 void	GamePlay::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer* renderer)

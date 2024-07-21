@@ -10,6 +10,7 @@ class StatesManager
 		static StatesManager* getInstance(void);
 		void	addState(GameState*);
 		void	removeState(void);
+		void	removeState(int);
 		void	handleInput(void);
 		void	update(void);
 		void	render(SDL_Renderer *);

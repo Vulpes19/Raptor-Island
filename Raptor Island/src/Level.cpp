@@ -2,7 +2,8 @@
 
 Level::Level(SDL_Renderer *renderer)
 {
-	TextureManager::getInstance()->loadImage("C:/Users/asus/source/repos/Raptor Island/assets/textures/green.png", "green", renderer);
+	TextureManager::getInstance()->loadImage("C:/Users/asus/source/repos/Raptor Island/assets/textures/dirt.png", "dirt", renderer);
+	TextureManager::getInstance()->loadImage("C:/Users/asus/source/repos/Raptor Island/assets/textures/brick.png", "brick", renderer);
 	//levelPaths["test"] = "C:/Users/asus/source/repos/Raptor Island/assets/levels/level_test.txt";
 	//builder.loadLevel(levelPaths["test"].c_str());
 }
@@ -19,7 +20,8 @@ void	Level::generateLevel(std::string level, std::string path)
 
 void	Level::render(SDL_Renderer *renderer)
 {
-	SDL_Texture* ground = TextureManager::getInstance()->getTexture("green");
+	SDL_Texture* ground = TextureManager::getInstance()->getTexture("dirt");
+	SDL_Texture* wall = TextureManager::getInstance()->getTexture("brick");
 	if (!ground)
 	{
 		throw(ErrorHandler("Error loading texture: " + std::string(SDL_GetError()), __FILE__, __LINE__));
@@ -39,9 +41,13 @@ void	Level::render(SDL_Renderer *renderer)
 			src.h = dest.h = 64;
 			dest.x = col * 64;
 			dest.y = row * 64;
-			if (line[col] == '1')
+			if (line[col] == '0')
 			{
 				SDL_RenderCopyEx(renderer, ground, &src, &dest, 0, 0, SDL_FLIP_NONE);
+			}
+			if (line[col] == '1')
+			{
+				SDL_RenderCopyEx(renderer, wall, &src, &dest, 0, 0, SDL_FLIP_NONE);
 			}
 		}
 		//std::cout << std::endl;

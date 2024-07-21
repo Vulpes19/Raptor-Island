@@ -29,6 +29,12 @@ void	StatesManager::removeState(void)
 	}
 }
 
+void	StatesManager::removeState(int n)
+{
+	for (int i = 0; i < n; i++)
+		removeState();
+}
+
 enum STATES	StatesManager::getCurrentState(void) const
 {
 	if (states.empty())
