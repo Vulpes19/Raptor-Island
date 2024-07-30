@@ -17,22 +17,32 @@ StatesManager::~StatesManager(void)
 
 void	StatesManager::addState(GameState* state)
 {
+	std::cout << "adding state " << state->getStateName() << " " << states.size() << std::endl;
 	states.push_back(state);
+	std::cout << "after adding " << states.size() << std::endl;
 }
 
-void	StatesManager::removeState(void)
+void	StatesManager::removeState(InputManager *input)
 {
 	if (!states.empty())
 	{
+		std::cout << "states number " << states.size() << std::endl;
+		InputObserver* observer = dynamic_cast<InputObserver*>(states.back());
+		if (observer) {
+			input->eraseObserver(observer);
+		}
 		delete states.back();
 		states.pop_back();
+		std::cout << "states number " << states.size() << std::endl;
+
+		std::cout << states.back()->getStateName() << std::endl;
 	}
 }
 
-void	StatesManager::removeState(int n)
+void	StatesManager::removeState(int n, InputManager *input)
 {
 	for (int i = 0; i < n; i++)
-		removeState();
+		removeState(input);
 }
 
 enum STATES	StatesManager::getCurrentState(void) const

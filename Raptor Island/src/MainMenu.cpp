@@ -13,7 +13,7 @@ MainMenu::~MainMenu(void)
 
 void	MainMenu::keyDown(SDL_Scancode key, double deltaTime, InputManager *input, SDL_Renderer*)
 {
-	if (InputDetector::getInstance()->isKeyPressed(key))
+	if (InputDetector::getInstance()->isKeyPressed(key) && StatesManager::getInstance()->getCurrentState() == MainMenuState)
 	{
 		if (key == SDL_SCANCODE_DOWN)
 		{
@@ -36,7 +36,7 @@ void	MainMenu::keyDown(SDL_Scancode key, double deltaTime, InputManager *input, 
 				throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
 		}
 		if (key == SDL_SCANCODE_RETURN && buttonsState["Quit"] == FOCUS_ON)
-			StatesManager::getInstance()->removeState();
+			StatesManager::getInstance()->removeState(input);
 	}
 }
 
@@ -44,7 +44,7 @@ void	MainMenu::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer *)
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
-	if (x >= 540 && x <= 740 && y >= 300 && y <= 380)
+	if (x >= 540 && x <= 740 && y >= 300 && y <= 380 && StatesManager::getInstance()->getCurrentState() == MainMenuState)
 	{
 		buttonsState["Play"] = FOCUS_ON;
 		buttonsState["Quit"] = FOCUS_OFF;
@@ -64,7 +64,7 @@ void	MainMenu::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer *)
 		buttonsState["Play"] = FOCUS_OFF;
 		buttonsState["Quit"] = FOCUS_ON;
 		if (mouseButton == SDL_BUTTON_LEFT)
-			StatesManager::getInstance()->removeState();
+			StatesManager::getInstance()->removeState(input);
 	}
 }
 

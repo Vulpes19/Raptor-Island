@@ -13,7 +13,7 @@ LevelMenu::~LevelMenu(void)
 
 void	LevelMenu::keyDown(SDL_Scancode key, double deltaTime, InputManager *input, SDL_Renderer* renderer)
 {
-	if (InputDetector::getInstance()->isKeyPressed(key))
+	if (InputDetector::getInstance()->isKeyPressed(key) && StatesManager::getInstance()->getCurrentState() == LevelMenuState)
 	{
 		if (key == SDL_SCANCODE_RIGHT)
 		{
@@ -42,7 +42,7 @@ void	LevelMenu::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer* 
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
-	if (x >= 10 && x <= 120 && y >= 10 && y <= 310)
+	if (x >= 10 && x <= 120 && y >= 10 && y <= 310 && StatesManager::getInstance()->getCurrentState() == LevelMenuState)
 	{
 		buttonsState["Level1"] = FOCUS_ON;
 		buttonsState["Level2"] = FOCUS_OFF;
@@ -57,7 +57,7 @@ void	LevelMenu::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer* 
 				throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
 		}
 	}
-	if (x >= 540 && x <= 640 && y >= 400 && y <= 500)
+	if (x >= 540 && x <= 640 && y >= 400 && y <= 500 && StatesManager::getInstance()->getCurrentState() == LevelMenuState)
 	{
 		buttonsState["Level1"] = FOCUS_OFF;
 		buttonsState["Level2"] = FOCUS_ON;

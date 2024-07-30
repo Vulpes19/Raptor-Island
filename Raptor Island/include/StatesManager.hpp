@@ -2,6 +2,7 @@
 
 #include "GameState.hpp"
 #include <vector>
+#include "InputObserver.hpp"
 
 class StatesManager
 {
@@ -9,8 +10,8 @@ class StatesManager
 		~StatesManager(void);
 		static StatesManager* getInstance(void);
 		void	addState(GameState*);
-		void	removeState(void);
-		void	removeState(int);
+		void	removeState(InputManager*);
+		void	removeState(int, InputManager*);
 		void	handleInput(void);
 		void	update(void);
 		void	render(SDL_Renderer *);

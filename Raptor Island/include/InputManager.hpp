@@ -1,6 +1,7 @@
 #pragma once
 
 #include "InputObserver.hpp"
+#include "GameState.hpp"
 #include <iostream>
 #include <algorithm>
 #include <vector>

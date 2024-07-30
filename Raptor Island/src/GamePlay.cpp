@@ -29,9 +29,9 @@ GamePlay::~GamePlay(void)
 
 void	GamePlay::keyDown(SDL_Scancode key, double deltaTime, InputManager* input, SDL_Renderer* renderer)
 {
-	if (InputDetector::getInstance()->isKeyPressed(key))
+	if (InputDetector::getInstance()->isKeyPressed(key) && StatesManager::getInstance()->getCurrentState() == GamePlayState)
 	{
-		if (key == SDL_SCANCODE_ESCAPE)
+		if (key == SDL_SCANCODE_ESCAPE && StatesManager::getInstance()->getCurrentState() != PauseMenuState)
 		{
 			StatesManager::getInstance()->addState(new PauseMenu());
 			InputObserver* pauseObserver = dynamic_cast<InputObserver*>(StatesManager::getInstance()->getCurrentStateInstance());
