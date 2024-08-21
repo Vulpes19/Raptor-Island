@@ -8,6 +8,7 @@
 #include "InputManager.hpp"
 #include "StatesManager.hpp"
 #include "PauseMenu.hpp"
+#include "Enemy.hpp"
 
 class GamePlay : public GameState, public InputObserver
 {
@@ -23,4 +24,5 @@ class GamePlay : public GameState, public InputObserver
 		Level* level = nullptr;
 		GameObjectFactory factory;
 		GameObject* player = nullptr;
+		std::vector<GameObject*> raptors;
 };

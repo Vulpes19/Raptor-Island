@@ -22,6 +22,7 @@ set(SOURCES
     src/LevelMenu.cpp
     src/GamePlay.cpp
     src/PauseMenu.cpp
+    src/Enemy.cpp
 )
 
 set(HEADERS
@@ -46,6 +47,7 @@ set(HEADERS
     include/LevelMenu.hpp
     include/GamePlay.hpp
     include/PauseMenu.hpp
+    include/Enemy.hpp
 )
 
 include_directories(include)

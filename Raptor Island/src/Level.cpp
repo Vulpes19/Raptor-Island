@@ -11,11 +11,26 @@ Level::Level(SDL_Renderer *renderer)
 Level::~Level(void)
 {}
 
-void	Level::generateLevel(std::string level, std::string path)
+std::vector<Vector>	Level::generateLevel(std::string level, std::string path)
 {
+	std::vector<Vector> enemySpawnPoints;
+
 	levelPaths[level] = path;
 	levelStr.clear();
 	levelStr = builder.loadLevel(levelPaths[level].c_str());
+
+	for (unsigned int row = 0; row < levelStr.size(); row++)
+	{
+		std::vector<char> line = levelStr[row];
+		for (unsigned int col = 0; col < line.size(); col++)
+		{
+			if (line[col] == '0')
+			{
+				enemySpawnPoints.push_back(Vector(col, row));
+			}
+		}
+	}
+	return enemySpawnPoints;
 }
 
 void	Level::render(SDL_Renderer *renderer)

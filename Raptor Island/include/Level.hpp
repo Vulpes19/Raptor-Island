@@ -20,11 +20,11 @@ class Level : public CollisionObserver
 	public:
 		Level(SDL_Renderer *);
 		~Level(void);
-		void	generateLevel(std::string, std::string);
-		void	render(SDL_Renderer *);
-		void	update(void);
-		GameResult	getResult(void) const;
-		COLLISION		checkCollision(Vector) override;
+		std::vector<Vector>	generateLevel(std::string, std::string);
+		void				render(SDL_Renderer *);
+		void				update(void);
+		GameResult			getResult(void) const;
+		COLLISION			checkCollision(Vector) override;
 	private:
 		std::vector<std::vector<char>> levelStr;
 		LevelBuilder builder;
