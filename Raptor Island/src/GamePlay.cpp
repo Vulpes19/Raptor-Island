@@ -24,23 +24,30 @@ GamePlay::GamePlay(InputManager *input, SDL_Renderer *renderer)
 		"C:/Users/asus/source/repos/Raptor Island/assets/levels/level_test.txt");
 
 	//spawning enemies
-	for (unsigned int index = 0; index < enemySpawnPoints.size(); index++)
+	std::cout << "end" << std::endl;
+	for (unsigned int nbr = 0; nbr < 3; nbr++)
 	{
-		unsigned int randomIndex = rand() % enemySpawnPoints.size();
-		
-		Vector spawnPosition = enemySpawnPoints[randomIndex];
-		GameObject* enemy = factory.createGameObject(
-			TYPES::RAPTOR,
-			"Raptor " + std::to_string(index),
-			spawnPosition,
-			"C:/Users/asus/source/repos/Raptor Island/assets/textures/brown.png",
-			renderer);
-		Enemy* enemyCollider = dynamic_cast<Enemy*>(player);
-		if (enemyCollider)
-			enemyCollider->addCollisionObserver(level);
-		else
-			throw(ErrorHandler("casting error, causes the collision to not work: ", __FILE__, __LINE__));
-		raptors.push_back(enemy);
+		if (!enemySpawnPoints.empty())
+		{
+			unsigned int randomIndex = rand() % enemySpawnPoints.size();
+
+			Vector spawnPosition = enemySpawnPoints[randomIndex];
+			spawnPosition.setX(spawnPosition.getX() * 64);
+			spawnPosition.setY(spawnPosition.getY() * 64);
+			GameObject* enemy = factory.createGameObject(
+				TYPES::RAPTOR,
+				"Raptor " + std::to_string(nbr),
+				spawnPosition,
+				"C:/Users/asus/source/repos/Raptor Island/assets/textures/brown.png",
+				renderer);
+			Enemy* enemyCollider = dynamic_cast<Enemy*>(enemy);
+			if (enemyCollider)
+				enemyCollider->addCollisionObserver(level);
+			else
+				throw(ErrorHandler("casting error, causes the collision to not work: ", __FILE__, __LINE__));
+			raptors.push_back(enemy);
+			enemySpawnPoints.erase(enemySpawnPoints.begin() + randomIndex);
+		}
 	}
 	//adding level as an observer to collision
 	Player *playerCollider = dynamic_cast<Player*>(player);
@@ -88,6 +95,8 @@ void	GamePlay::update(void)
 	level->update();
 	player->update(0);
 	//enemies
+	for (auto enemy : raptors)
+		enemy->update(0);
 }
 
 void	GamePlay::render(SDL_Renderer *renderer)
@@ -95,5 +104,7 @@ void	GamePlay::render(SDL_Renderer *renderer)
 	level->render(renderer);
 	player->render(renderer);
 	//enemies
+	for (auto enemy : raptors)
+		enemy->render(renderer);
 }
 
