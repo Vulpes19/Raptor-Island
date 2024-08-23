@@ -11,9 +11,9 @@ Level::Level(SDL_Renderer *renderer)
 Level::~Level(void)
 {}
 
-std::vector<Vector>	Level::generateLevel(std::string level, std::string path)
+levelPosData	Level::generateLevel(std::string level, std::string path)
 {
-	std::vector<Vector> enemySpawnPoints;
+	levelPosData	positions;
 
 	levelPaths[level] = path;
 	levelStr.clear();
@@ -24,13 +24,19 @@ std::vector<Vector>	Level::generateLevel(std::string level, std::string path)
 		std::vector<char> line = levelStr[row];
 		for (unsigned int col = 0; col < line.size(); col++)
 		{
-			if (line[col] == '0')
+			if (line[col] == 'P')
 			{
-				enemySpawnPoints.push_back(Vector(col, row));
+				levelStr[row][col] = '0';
+				positions.playerPosition = Vector(col * 64, row * 64);
+			}
+			else if (line[col] == 'R')
+			{
+				levelStr[row][col] = '0';
+				positions.raptorSpawnPoints.push_back(Vector(col, row));
 			}
 		}
 	}
-	return enemySpawnPoints;
+	return positions;
 }
 
 void	Level::render(SDL_Renderer *renderer)

@@ -15,12 +15,18 @@ enum GameResult
 	NONE
 };
 
+struct levelPosData
+{
+	Vector playerPosition;
+	std::vector<Vector> raptorSpawnPoints;
+};
+
 class Level : public CollisionObserver
 {
 	public:
 		Level(SDL_Renderer *);
 		~Level(void);
-		std::vector<Vector>	generateLevel(std::string, std::string);
+		levelPosData		generateLevel(std::string, std::string);
 		void				render(SDL_Renderer *);
 		void				update(void);
 		GameResult			getResult(void) const;

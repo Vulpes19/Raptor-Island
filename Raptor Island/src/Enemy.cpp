@@ -1,9 +1,9 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy(std::string textureName, Vector spawnPosition) : GameObject(textureName)
+Enemy::Enemy(std::string textureName, Vector spawnPosition) : GameObject(textureName, spawnPosition)
 {
-	position.setX(spawnPosition.getX());
-	position.setY(spawnPosition.getY());
+	//position.setX(spawnPosition.getX());
+	//position.setY(spawnPosition.getY());
 	acceleration.setX(0.1);
 	acceleration.setY(0.1);
 }

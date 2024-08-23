@@ -4,7 +4,7 @@
 int main(int ac, char **av)
 {
 	SDL_SetMainReady();
-
+	srand(time(0));
 	try
 	{
 		Game* game = new Game();

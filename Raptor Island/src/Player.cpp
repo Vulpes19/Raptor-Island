@@ -1,9 +1,7 @@
 #include "Player.hpp"
 
-Player::Player(std::string textureName) : GameObject(textureName)
+Player::Player(std::string textureName, Vector position) : GameObject(textureName, position)
 {
-	position.setX(80);
-	position.setY(80);
 	acceleration.setX(0.1);
 	acceleration.setY(0.1);
 }

@@ -17,7 +17,7 @@ enum class TYPES
 class GameObject
 {
 	public:
-		GameObject(std::string);
+		GameObject(std::string, Vector);
 		~GameObject(void);
 		virtual void	handleInput(void);
 		virtual void	update(double);

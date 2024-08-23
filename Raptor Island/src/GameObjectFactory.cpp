@@ -5,7 +5,7 @@ GameObject* GameObjectFactory::createGameObject(enum class TYPES type, std::stri
 	TextureManager::getInstance()->loadImage(imgPath, textureName, renderer);
 	if (type == TYPES::PLAYER)
 	{
-		return (new Player(textureName));
+		return (new Player(textureName, spawnPosition));
 	}
 	if (type == TYPES::RAPTOR)
 		return (new Enemy(textureName, spawnPosition));

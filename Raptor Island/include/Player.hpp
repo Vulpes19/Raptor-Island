@@ -8,7 +8,7 @@
 class Player : public InputObserver, public GameObject
 {
 	public:
-		Player(std::string);
+		Player(std::string, Vector);
 		virtual ~Player(void);
 		void	handleInput(void) override {};
 		void	keyDown(SDL_Scancode, double, InputManager* = nullptr, SDL_Renderer* = nullptr) override;

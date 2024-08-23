@@ -3,35 +3,36 @@
 GamePlay::GamePlay(InputManager *input, SDL_Renderer *renderer)
 {
 	stateName = GamePlayState;
+
+	std::cout << "im in constructor gameplay" << std::endl;
+	//creating level
+	level = new Level(renderer);
+	levelPosData positions = level->generateLevel(
+		"test", 
+		"C:/Users/asus/source/repos/Raptor Island/assets/levels/level_test.txt");
+
+	//creating player
 	player = factory.createGameObject(
 		TYPES::PLAYER, 
 		"player", 
-		Vector(),
+		positions.playerPosition,
 		"C:/Users/asus/source/repos/Raptor Island/assets/textures/player.png", 
 		renderer);
-
-	std::cout << "im in constructor gameplay" << std::endl;
 	//add player as an observer to input
 	InputObserver* playerObserver = dynamic_cast<InputObserver*>(player);
 	if (playerObserver)
 		input->addObserver(playerObserver);
 	else
 		throw(ErrorHandler("Can't cast player to an observer, causes the input to not work: ", __FILE__, __LINE__));
-	//creating level
-	level = new Level(renderer);
-	std::vector<Vector> enemySpawnPoints = level->generateLevel(
-		"test", 
-		"C:/Users/asus/source/repos/Raptor Island/assets/levels/level_test.txt");
-
+	
 	//spawning enemies
-	std::cout << "end" << std::endl;
 	for (unsigned int nbr = 0; nbr < 3; nbr++)
 	{
-		if (!enemySpawnPoints.empty())
+		if (!positions.raptorSpawnPoints.empty())
 		{
-			unsigned int randomIndex = rand() % enemySpawnPoints.size();
+			unsigned int randomIndex = rand() % positions.raptorSpawnPoints.size();
 
-			Vector spawnPosition = enemySpawnPoints[randomIndex];
+			Vector spawnPosition = positions.raptorSpawnPoints[randomIndex];
 			spawnPosition.setX(spawnPosition.getX() * 64);
 			spawnPosition.setY(spawnPosition.getY() * 64);
 			GameObject* enemy = factory.createGameObject(
@@ -46,7 +47,7 @@ GamePlay::GamePlay(InputManager *input, SDL_Renderer *renderer)
 			else
 				throw(ErrorHandler("casting error, causes the collision to not work: ", __FILE__, __LINE__));
 			raptors.push_back(enemy);
-			enemySpawnPoints.erase(enemySpawnPoints.begin() + randomIndex);
+			positions.raptorSpawnPoints.erase(positions.raptorSpawnPoints.begin() + randomIndex);
 		}
 	}
 	//adding level as an observer to collision
