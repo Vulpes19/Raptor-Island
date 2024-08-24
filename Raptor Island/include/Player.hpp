@@ -8,10 +8,11 @@
 class Player : public InputObserver, public GameObject
 {
 	public:
-		Player(std::string, Vector);
+		Player(std::string, Vector&);
 		virtual ~Player(void);
 		void	handleInput(void) override {};
 		void	keyDown(SDL_Scancode, double, InputManager* = nullptr, SDL_Renderer* = nullptr) override;
+		//void	keyUp(SDL_Scancode, double, InputManager* = nullptr, SDL_Renderer* = nullptr);
 		void	mouseMove(Uint8, InputManager* = nullptr, SDL_Renderer* = nullptr) override {};
 		void	update(double) override;
 		void	addCollisionObserver(CollisionObserver*);

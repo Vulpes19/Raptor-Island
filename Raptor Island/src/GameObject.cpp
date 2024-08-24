@@ -1,6 +1,6 @@
 #include "GameObject.hpp"
 
-GameObject::GameObject(std::string textureName, Vector position) : textureName(textureName), position(position)
+GameObject::GameObject(std::string textureName, Vector &position) : textureName(textureName), position(position)
 {}
 
 GameObject::~GameObject(void)

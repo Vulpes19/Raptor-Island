@@ -57,7 +57,7 @@ void	LevelMenu::mouseMove(Uint8 mouseButton, InputManager* input, SDL_Renderer* 
 				throw(ErrorHandler("Can't cast state to an observer, causes the input to not work: ", __FILE__, __LINE__));
 		}
 	}
-	if (x >= 540 && x <= 640 && y >= 400 && y <= 500 && StatesManager::getInstance()->getCurrentState() == LevelMenuState)
+	if (x >= 140 && x <= 250 && y >= 10 && y <= 310 && StatesManager::getInstance()->getCurrentState() == LevelMenuState)
 	{
 		buttonsState["Level1"] = FOCUS_OFF;
 		buttonsState["Level2"] = FOCUS_ON;
@@ -76,7 +76,7 @@ void	LevelMenu::update(void)
 
 void	LevelMenu::render(SDL_Renderer* renderer)
 {
-	label.render(10, 10, "LevelMenu", "Level 1", "Bangers", renderer, buttonsState["Level1"]);
-	label.render(540, 400, "LevelMenu", "Level 2", "Bangers", renderer, buttonsState["Level2"]);
+	label.render(10, 10, "LevelMenu", "Lvl 1", "Bangers", renderer, buttonsState["Level1"]);
+	label.render(140, 10, "LevelMenu", "Lvl 2", "Bangers", renderer, buttonsState["Level2"]);
 }
 

@@ -15,10 +15,18 @@ enum GameResult
 	NONE
 };
 
+struct WayPoint {
+	Vector position;
+	enum class Status { FREE, RESERVED } status;
+
+	WayPoint(Vector pos) : position(pos), status(Status::FREE) {}
+};
+
 struct levelPosData
 {
 	Vector playerPosition;
 	std::vector<Vector> raptorSpawnPoints;
+	std::vector<WayPoint> patrolWayPoints;
 };
 
 class Level : public CollisionObserver

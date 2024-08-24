@@ -24,12 +24,16 @@ levelPosData	Level::generateLevel(std::string level, std::string path)
 		std::vector<char> line = levelStr[row];
 		for (unsigned int col = 0; col < line.size(); col++)
 		{
+			if (line[col] == '0')
+			{
+				positions.patrolWayPoints.push_back(WayPoint(Vector(col * 64, row * 64)));
+			}
 			if (line[col] == 'P')
 			{
 				levelStr[row][col] = '0';
 				positions.playerPosition = Vector(col * 64, row * 64);
 			}
-			else if (line[col] == 'R')
+			if (line[col] == 'R')
 			{
 				levelStr[row][col] = '0';
 				positions.raptorSpawnPoints.push_back(Vector(col, row));

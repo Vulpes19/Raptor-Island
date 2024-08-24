@@ -33,9 +33,9 @@ void	StatesManager::removeState(InputManager *input)
 		}
 		delete states.back();
 		states.pop_back();
-		std::cout << "states number " << states.size() << std::endl;
+		//std::cout << "states number " << states.size() << std::endl;
 
-		std::cout << states.back()->getStateName() << std::endl;
+		//std::cout << states.back()->getStateName() << std::endl;
 	}
 }
 

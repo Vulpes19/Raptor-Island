@@ -7,5 +7,11 @@
 class GameObjectFactory
 {
 	public:
-		GameObject* createGameObject(enum class TYPES, std::string, Vector, const char *, SDL_Renderer *);
+		GameObject* createGameObject(
+			enum class TYPES, 
+			std::string, 
+			Vector &, 
+			std::vector<WayPoint>&, 
+			const char *, 
+			SDL_Renderer *);
 };

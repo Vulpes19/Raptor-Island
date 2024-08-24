@@ -1,6 +1,6 @@
 #include "Player.hpp"
 
-Player::Player(std::string textureName, Vector position) : GameObject(textureName, position)
+Player::Player(std::string textureName, Vector &position) : GameObject(textureName, position)
 {
 	acceleration.setX(0.1);
 	acceleration.setY(0.1);
@@ -44,6 +44,7 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Rend
 		}
 	}
 }
+
 
 void	Player::update(double deltaTime)
 {
