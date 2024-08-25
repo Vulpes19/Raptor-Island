@@ -4,8 +4,8 @@ Enemy::Enemy(std::string textureName, Vector &spawnPosition, std::vector<WayPoin
 {
 	//position.setX(spawnPosition.getX());
 	//position.setY(spawnPosition.getY());
-	acceleration.setX(0.1);
-	acceleration.setY(0.1);
+	acceleration.setX(0.0001);
+	acceleration.setY(0.0001);
 }
 
 Enemy::~Enemy(void)
@@ -22,8 +22,18 @@ void	Enemy::update(double deltaTime)
 				direction.normalize();
 
 				position += direction + acceleration;
-				
-				if (position == targetWaypoint)
+				/*std::cout << "pos: ";
+				std::cout << position.getX() << " " << position.getY() << std::endl;
+				std::cout << "target: ";
+				std::cout << targetWaypoint.getX() << " " << targetWaypoint.getY() << std::endl;
+				*/if (position == targetWaypoint)
+				{
+					//std::cout << "<<<<<<<<<<>>>>>>>>>>>>" << std::endl;
+					//std::cout << "target reached" << std::endl;
+					wayPointLocked = false;
+					wayPoints[targetPointIndex].status = WayPoint::Status::FREE;
+					lockWayPoint();
+				}
 			}
 			else
 				lockWayPoint();
@@ -51,6 +61,9 @@ void	Enemy::lockWayPoint(void)
 				wayPointLocked = true;
 				targetWaypoint = wayPoints[randomIndex].position;
 				wayPoints[randomIndex].status = WayPoint::Status::RESERVED;
+				targetPointIndex = randomIndex;
+				std::cout << "generated new waypoint" << std::endl;
+				std::cout << "<<<<<<<<<<>>>>>>>>>>>>" << std::endl;
 			}
 		}
 	}

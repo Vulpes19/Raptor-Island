@@ -28,4 +28,5 @@ private:
 	RAPTOR_STATE	currentState = RAPTOR_STATE::PATROL;
 	bool	wayPointLocked = false;
 	Vector	targetWaypoint;
+	unsigned int	targetPointIndex = 0;
 };

@@ -11,7 +11,7 @@ class GameObjectFactory
 			enum class TYPES, 
 			std::string, 
 			Vector &, 
-			std::vector<WayPoint>&, 
 			const char *, 
-			SDL_Renderer *);
+			SDL_Renderer *,
+			std::vector<WayPoint> & = std::vector<WayPoint>());
 };

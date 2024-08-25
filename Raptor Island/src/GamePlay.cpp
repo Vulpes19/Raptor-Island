@@ -39,9 +39,9 @@ GamePlay::GamePlay(InputManager *input, SDL_Renderer *renderer)
 				TYPES::RAPTOR,
 				"Raptor " + std::to_string(nbr),
 				spawnPosition,
-				positions.patrolWayPoints,
 				"C:/Users/asus/source/repos/Raptor Island/assets/textures/brown.png",
-				renderer);
+				renderer,
+				positions.patrolWayPoints);
 			Enemy* enemyCollider = dynamic_cast<Enemy*>(enemy);
 			if (enemyCollider)
 				enemyCollider->addCollisionObserver(level);

@@ -30,6 +30,11 @@ double	Vector::getLength(void) const
 {
 	return (sqrt(x * x + y * y));
 }
+bool Vector::operator==(const Vector& other) const
+{
+	double epsilon = 1;  // Tolerance value
+	return (std::abs(x - other.x) < epsilon) && (std::abs(y - other.y) < epsilon);
+}
 Vector Vector::operator+(const Vector& vec)
 {
 	return (Vector(x + vec.x, y + vec.y));

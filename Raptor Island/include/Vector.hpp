@@ -13,6 +13,7 @@ public:
 	void	setX(double);
 	void	setY(double);
 	double	getLength(void) const;
+	bool	operator==(const Vector& other) const;
 	Vector	operator+(const Vector&);
 	Vector	operator+(const double);
 	Vector	operator-(const Vector&);
