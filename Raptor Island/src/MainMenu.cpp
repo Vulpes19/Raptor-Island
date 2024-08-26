@@ -73,7 +73,7 @@ void	MainMenu::handleInput(void)
 
 }
 
-void	MainMenu::update(void)
+void	MainMenu::update(double)
 {
 
 }

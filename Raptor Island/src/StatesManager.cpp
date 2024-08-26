@@ -66,11 +66,11 @@ void	StatesManager::handleInput(void)
 	}
 }
 
-void	StatesManager::update(void)
+void	StatesManager::update(double deltaTime)
 {
 	if (!states.empty())
 	{
-		states.back()->update();
+		states.back()->update(deltaTime);
 	}
 }
 

@@ -13,7 +13,7 @@ class StatesManager
 		void	removeState(InputManager*);
 		void	removeState(int, InputManager*);
 		void	handleInput(void);
-		void	update(void);
+		void	update(double);
 		void	render(SDL_Renderer *);
 		enum STATES	getCurrentState(void) const;
 		GameState* StatesManager::getCurrentStateInstance(void) const;

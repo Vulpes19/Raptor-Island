@@ -32,8 +32,8 @@ class Game
 		SDL_Renderer* renderer = nullptr;
 		SDL_Event	event;
 		InputManager* input = nullptr;
-		Time	prevTime;
-		Time	currTime;
+		Uint32	prevTime;
+		Uint32	currTime;
 		double			deltaTime;
 		bool	running = false;
 };

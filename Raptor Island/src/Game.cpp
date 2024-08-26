@@ -94,7 +94,7 @@ void	Game::update(void)
 		FontManager::clean();
 		running = false;
 	}
-	StatesManager::getInstance()->update();
+	StatesManager::getInstance()->update(deltaTime);
 	//player->update(deltaTime);
 }
 
@@ -105,8 +105,7 @@ bool	Game::isRunning(void) const
 
 void	Game::updateDeltaTime(void)
 {
-	currTime = Clock::now();
-	std::chrono::duration<double> duration = currTime - prevTime;
-	deltaTime = duration.count();
-	prevTime = Clock::now();
+	currTime = SDL_GetTicks();
+	deltaTime = (currTime - prevTime) / 1000.0;
+	prevTime = currTime;
 }

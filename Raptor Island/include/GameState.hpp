@@ -16,7 +16,7 @@ class GameState
 	public:
 		virtual ~GameState() {};
 		virtual void	handleInput(void) = 0;
-		virtual void	update(void) = 0;
+		virtual void	update(double = 0) = 0;
 		virtual void	render(SDL_Renderer *) = 0;
 		enum STATES		getStateName(void) const { return (stateName); }
 	protected:

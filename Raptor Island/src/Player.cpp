@@ -11,7 +11,7 @@ Player::~Player(void)
 
 void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Renderer*)
 {
-	const double accelerationLimit = 0.5;
+	const double accelerationLimit = 4;
 	if (InputDetector::getInstance()->isKeyPressed(key))
 	{
 		if (key == SDL_SCANCODE_S)
@@ -20,6 +20,7 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Rend
 				velocity.setY(velocity.getY() + acceleration.getY());
 			velocity.setX(0);
 			std::cout << "W is pressed " << velocity.getY() << std::endl;
+			position = position + (velocity * deltaTime);
 		}
 		if (key == SDL_SCANCODE_W)
 		{
@@ -27,6 +28,7 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Rend
 				velocity.setY(velocity.getY() - acceleration.getY());
 			velocity.setX(0);
 			std::cout << "S is pressed " << velocity.getY() << std::endl;
+			position = position + (velocity * deltaTime);
 		}
 		if (key == SDL_SCANCODE_A)
 		{
@@ -34,6 +36,7 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Rend
 				velocity.setX(velocity.getX() - acceleration.getX());
 			velocity.setY(0);
 			std::cout << "A is pressed " << velocity.getY() << std::endl;
+			position = position + (velocity * deltaTime);
 		}
 		if (key == SDL_SCANCODE_D)
 		{
@@ -41,6 +44,7 @@ void	Player::keyDown(SDL_Scancode key, double deltaTime, InputManager*, SDL_Rend
 				velocity.setX(velocity.getX() + acceleration.getX());
 			velocity.setY(0);
 			std::cout << "D is pressed " << velocity.getY() << std::endl;
+			position = position + (velocity * deltaTime);
 		}
 	}
 }
@@ -60,7 +64,7 @@ void	Player::update(double deltaTime)
 				playerWasted();
 				return;
 			default:
-				position = position + velocity;
+				//position = position + (velocity * deltaTime);
 				break;
 		}
 	}

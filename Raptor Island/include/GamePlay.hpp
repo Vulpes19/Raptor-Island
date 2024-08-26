@@ -18,7 +18,7 @@ class GamePlay : public GameState, public InputObserver
 		void handleInput(void) override;
 		void keyDown(SDL_Scancode, double, InputManager*, SDL_Renderer *) override;
 		void mouseMove(Uint8, InputManager*, SDL_Renderer*) override;
-		void update(void) override;
+		void update(double = 0) override;
 		void render(SDL_Renderer *) override;
 	private:
 		Level* level = nullptr;

@@ -21,7 +21,7 @@ void	Enemy::update(double deltaTime)
 				Vector direction = targetWaypoint - position;
 				direction.normalize();
 
-				position += direction + acceleration;
+				position += direction + acceleration * deltaTime;
 				/*std::cout << "pos: ";
 				std::cout << position.getX() << " " << position.getY() << std::endl;
 				std::cout << "target: ";
@@ -62,8 +62,6 @@ void	Enemy::lockWayPoint(void)
 				targetWaypoint = wayPoints[randomIndex].position;
 				wayPoints[randomIndex].status = WayPoint::Status::RESERVED;
 				targetPointIndex = randomIndex;
-				std::cout << "generated new waypoint" << std::endl;
-				std::cout << "<<<<<<<<<<>>>>>>>>>>>>" << std::endl;
 			}
 		}
 	}

@@ -71,7 +71,7 @@ void	PauseMenu::handleInput(void)
 
 }
 
-void	PauseMenu::update(void)
+void	PauseMenu::update(double)
 {
 
 }

@@ -69,7 +69,7 @@ void	LevelMenu::handleInput(void)
 
 }
 
-void	LevelMenu::update(void)
+void	LevelMenu::update(double)
 {
 
 }

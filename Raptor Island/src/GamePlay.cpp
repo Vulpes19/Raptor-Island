@@ -92,13 +92,13 @@ void	GamePlay::handleInput(void)
 
 }
 
-void	GamePlay::update(void)
+void	GamePlay::update(double deltaTime)
 {
 	level->update();
-	player->update(0);
+	player->update(deltaTime);
 	//enemies
 	for (auto enemy : raptors)
-		enemy->update(0);
+		enemy->update(deltaTime);
 }
 
 void	GamePlay::render(SDL_Renderer *renderer)
